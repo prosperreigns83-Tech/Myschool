@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>STV Tech Academy</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+  <!-- Header / Navbar -->
+  <header>
+    <div class="container">
+      <h1>ITECH Academy</h1>
+      <nav>
+        <ul>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="about.html">About</a></li>
+          <li><a href="courses.html">Courses</a></li>
+          <li><a href="./blogpassword.html" title="please resister as a student before you can access this">Blog</a></li>
+          <li><a href="contact.html">Contact</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Hero Section -->
+  <section class="container hero">
+  <div class="hero-text">
+    <h2>Hi, I’m PROSPER EMONIS 👋</h2>
+    <p>I teach <strong>Web Development, Tech, and Coding</strong> in simple and practical ways.</p>
+    <a href="courses.html" class="btn">Explore Courses</a>
+  </div>
+  <div class="hero-image">
+    <img src="../image/Snapchat-760208935~2.jpg" alt="Profile Photo">
+  </div>
+</section>
+    
+
+
+  <!-- Links Section -->
+  <section class="links">
+    <h2>Quick Access</h2>
+    <a href="payment.html" class="btn" title="please pay & resister">💳 Pay & Register</a>
+    <a href="./studentlogin.html" class="btn" title="please login with your password and id given to you after payment">👩‍🎓 Student Login</a>
+
+  </section>
+
+  <!-- About Section -->
+  <section class="about container">
+    <h2>About Me</h2>
+    <p>
+      Hi, I’m <strong>ITECH</strong>, a passionate web developer and tech instructor.  
+      I created this platform to help beginners and professionals master coding, 
+      web development, and digital skills.
+    </p>
+  </section>
+
+  <!-- Blog Section -->
+  <section class="container">
+    <h2>Latest Articles</h2>
+    <div class="blog-list">
+      <div class="blog-card">
+        <h3>Getting Started with HTML</h3>
+        <p>Learn the basics of structuring your first website with HTML.</p>
+      </div>
+      <div class="blog-card">
+        <h3>Why Learn CSS?</h3>
+        <p>Discover how CSS makes your websites stylish and responsive.</p>
+      </div>
+      <div class="blog-card">
+        <h3>JavaScript for Beginners</h3>
+        <p>Start your programming journey with the language of the web.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Contact Section -->
+  <section class="container">
+    <h2>Contact Me</h2>
+    <form>
+      <input type="text" placeholder="Your Name" required>
+      <input type="email" placeholder="Your Email" required>
+      <textarea placeholder="Your Message" rows="5" required></textarea>
+      <button type="submit">Send Message</button>
+    </form>
+  </section>
+  <section class="container testimonials">
+  <h2>What My Students Say</h2>
+  <div class="testimonials-grid">
+    <div class="testimonial-card">
+      <p>“The way Prosper teaches web development is so clear and easy to understand. I built my first website in 2 weeks!”</p>
+      <h4>— John Doe, Student</h4>
+    </div>
+    <div class="testimonial-card">
+      <p>“I finally understood JavaScript thanks to his lessons. Now I feel confident to apply for junior developer roles.”</p>
+      <h4>— Mary Smith, Student</h4>
+    </div>
+    <div class="testimonial-card">
+      <p>“The Full-Stack course is amazing! I learned both frontend and backend development step by step.”</p>
+      <h4>— Ahmed Ali, Student</h4>
+    </div>
+  </div>
+</section>
+
+
+  <!-- Footer -->
+   <footer class="footer">
+  <div class="footer-container">
+    <div class="footer-col">
+      <h3>About</h3>
+      <p>ITECH COLLEGE — International Technical Creativity Vocational College.</p>
+    </div>
+    <div class="footer-col">
+      <h3>Quick Links</h3>
+      <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="courses.html">Courses</a></li>
+        <li><a href="contact.html">Contact</a></li>
+         <li><a href="./studentlogin.html">Student login</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h3>Contact</h3>
+      <p>Email: info@itechcollege.com</p>
+      <p>Phone: +234 905 294 8002</p>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <p>&copy; 2025 ITECH COLLEGE. All rights reserved.</p>
+  </div>
+</footer>
+<footer class="footer">
+  <div class="container">
+    <p>&copy; 2025 PROSPER EMONI — All Rights Reserved.</p>
+    <div class="social-links">
+      <a href="https://twitter.com" target="_blank">Twitter</a>
+      <a href="https://Facebook.com" target="_blank">Facebook</a>
+      <a href="https://Tiktok.com" target="_blank">Tiktok</a>
+    </div>
+  </div>
+</footer>
+<!-- Scroll to Top Button -->
+<button id="scrollTopBtn" title="Go to top">↑</button>
+<script>
+  // Get the button
+  const scrollBtn = document.getElementById("scrollTopBtn");
+
+  // Show button when user scrolls down 200px
+  window.onscroll = function() {
+    if (document.body.scrollTop > 200 || document.documentElement.scrollTop > 200) {
+      scrollBtn.style.display = "block";
+    } else {
+      scrollBtn.style.display = "none";
+    }
+  };
+
+  // When clicked, scroll to top
+  scrollBtn.onclick = function() {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  };
+
+document.querySelector(".newsletter").addEventListener("submit", async (e) => {
+  e.preventDefault();
+  const email = e.target.querySelector("input").value;
+
+  try {
+    const res = await fetch("http://localhost:5000/api/newsletter", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ email })
+    });
+    const data = await res.json();
+    alert(data.message);
+
+    if(data.success){
+      e.target.reset(); // clear input
+    }
+  } catch (err) {
+    alert("Network error, please try again.");
+    console.error(err);
+  }
+});
+
+</script>
+
+</body>
+</html>
